@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <!--js模板引擎arttemplate-->
+    <script src="template.js"></script>
+    <script id="s1" type="text/html">
+        {{each list as item}}
+        <tr><td>{{item.name}}</td><td>{{item.url}}</td></tr>
+        {{/each}}
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            var data = [{ name: "百度", url: "www.baidu,com" }, { name: "QQ", url: "www.qq.com" }];
+
+            //普通的将json拼接成html
+            //for (var i = 0; i < data.length; i++)
+            //{
+            //    var item = data[i];
+            //    $("<tr><td style='color:red'>" + item.name + "</td><td>" + item.url + "</td><tr>")
+            //        .appendTo($("#t1"));
+            //}
+           
+            //使用js模板引擎arttemplate将json拼接html，没有字符串拼接代码清晰
+            //template方法是在template.js里，加载s1模板，加载数据list:data(data是数据) list和上面s1,list名称一样
+            // var html就是上面s1遍历生成的html代码
+            var html = template('s1', { list: data });
+            //测试
+            alert(html)
+            $("#t1").html(html);
+            //document.getElementById('t1').innerHTML = html;
+        });
+
+
+    </script>
+</head>
+<body>
+    <table id="t1">
+
+    </table>
+</body>
+</html>

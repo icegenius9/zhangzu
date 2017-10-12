@@ -1,0 +1,40 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TestJson</title>
+    <script src="~/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#btn1").click(function () {
+                $.ajax({
+                    type: "post", url: "/Default/TestJson", DataType: "json",
+                    success: function (data) {
+                        alert(data.name);
+                        alert(data.birthDate);
+                       
+                    },
+                    error: function () {
+                        alert("ajax错误");
+
+                    }
+
+                })
+
+            })
+
+        })
+    </script>
+</head>
+<body>
+    <div> 
+        <button id="btn1">click</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+﻿@using ZSZ.CommonMVC 
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Pager1</title>
+</head>
+<body>
+    <div> 
+    </div>
+    @{ 
+        //调用ZSZ.CommonMVC 类库的MyPager类完成分页
+        MyPager pager = new MyPager();
+        //当前页的样式
+        pager.CurrentPageClassName = "active";
+        //最多10个页码
+        pager.MaxPagerCount = 10;
+        //当前第3页
+        pager.PageIndex = 3;
+        //每页50条数据
+        pager.PageSize = 50;
+        //总数据条数
+        pager.TotalCount = 809;
+        //Url的格式
+        pager.UrlPattern = "/Data?p={pn}";
+
+    }
+    @*@会吧html代码Urlinclude,输出html带码,加上Html.Raw显示对应的html控件 }}*@
+    @Html.Raw(pager.GetPagerHtml())
+</body>
+</html>
